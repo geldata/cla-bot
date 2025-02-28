@@ -1,6 +1,6 @@
 import React, {Component, ReactElement, ChangeEvent} from "react";
 import Select from "@mui/material/Select";
-import { SelectChangeEvent } from "@mui/material/Select";
+import {SelectChangeEvent} from "@mui/material/Select";
 import {changeHandler} from "../../forms";
 
 export interface NamedItem {

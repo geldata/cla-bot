@@ -9,10 +9,10 @@ import "normalize.css";
 import "../styles/global.scss";
 import "react-markdown-editor-lite/lib/index.css";
 
-import { CacheProvider } from '@emotion/react';
-import createCache from '@emotion/cache'
+import {CacheProvider} from "@emotion/react";
+import createCache from "@emotion/cache";
 
-const cache = createCache({ key: "next" });
+const cache = createCache({key: "next"});
 
 export default function App(props: AppProps): ReactElement {
   const {Component, pageProps} = props;

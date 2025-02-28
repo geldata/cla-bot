@@ -1,13 +1,18 @@
 import {ChangeEvent} from "react";
-import { SelectChangeEvent } from "@mui/material/Select";
+import {SelectChangeEvent} from "@mui/material/Select";
 
 /**
  * Generic input field change handler, that updates a value in the state
  * by input field name attribute.
  */
 export function changeHandler(
-  event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | {name?: string; value: unknown}>
-  | SelectChangeEvent<string>
+  event:
+    | ChangeEvent<
+        | HTMLInputElement
+        | HTMLTextAreaElement
+        | {name?: string; value: unknown}
+      >
+    | SelectChangeEvent<string>
 ): void {
   const target = event.target;
   const name = target.name;

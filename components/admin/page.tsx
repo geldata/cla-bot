@@ -14,7 +14,10 @@ interface AdminPageState {
  * Renders its children only if the sessionStorage contains an
  * access token. Redirects to admin login page otherwise.
  */
-export default class AdminPage extends Component<React.PropsWithChildren<{}>, AdminPageState> {
+export default class AdminPage extends Component<
+  React.PropsWithChildren<{}>,
+  AdminPageState
+> {
   constructor(props: React.PropsWithChildren<{}>) {
     super(props);
 

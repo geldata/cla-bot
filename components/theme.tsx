@@ -21,7 +21,7 @@ export default createTheme({
       defaultProps: {
         variant: "outlined",
         color: "primary",
-      }
+      },
     },
   },
 });

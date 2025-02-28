@@ -2,7 +2,7 @@ import Layout from "./layout";
 import Select from "@mui/material/Select";
 import {Component, ReactElement} from "react";
 import {MenuItem} from "@mui/material";
-import { SelectChangeEvent } from "@mui/material/Select";
+import {SelectChangeEvent} from "@mui/material/Select";
 
 const DatesCulturePreferenceKey = "DATES_CULTURE";
 
