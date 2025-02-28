@@ -35,9 +35,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   // redirect to admin page
 
   await handleExceptions(res, async () => {
-    const result = await administratorsHandler.validateAdministratorLogin(
-      accessToken
-    );
+    const result =
+      await administratorsHandler.validateAdministratorLogin(accessToken);
 
     // Redirect to a page that sets the access token to the session
     // storage, then redirects to the admin page

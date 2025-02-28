@@ -1,4 +1,4 @@
-import {Button, TextField} from "@material-ui/core";
+import {Button, TextField} from "@mui/material";
 import {Component, ReactElement} from "react";
 import ErrorPanel from "../../common/error";
 import Loader from "../../common/loader";

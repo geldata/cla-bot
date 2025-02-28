@@ -65,9 +65,8 @@ export class AdministratorsHandler {
   async validateAdministratorLogin(accessToken: string): Promise<string> {
     // first try to authenticate the user by comparing its id with
     // organization members with admin role
-    const userInfo = await this._usersService.getUserInfoFromAccessToken(
-      accessToken
-    );
+    const userInfo =
+      await this._usersService.getUserInfoFromAccessToken(accessToken);
 
     // is there an organization administrator with matching user id?
     const organizationMembers = await this._organizationsService.getMembers(
@@ -90,9 +89,8 @@ export class AdministratorsHandler {
     }
 
     // try to authenticate the user by email address and db configuration
-    const userEmails = await this._usersService.getUserEmailAddresses(
-      accessToken
-    );
+    const userEmails =
+      await this._usersService.getUserEmailAddresses(accessToken);
 
     // try first using the primary email
     const emailInfo = userEmails.find((item) => item.primary && item.verified);

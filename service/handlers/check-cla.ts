@@ -1,4 +1,3 @@
-import {async_retry} from "../common/resiliency";
 import {
   CheckState,
   StatusCheckInput,
@@ -22,8 +21,11 @@ export const FAILURE_MESSAGE =
 
 @injectable()
 class ClaCheckHandler {
-  @inject(TYPES.ServiceSettings) private _settings: ServiceSettings;
-  @inject(TYPES.ClaRepository) private _claRepository: ClaRepository;
+  @inject(TYPES.ServiceSettings)
+  private _settings: ServiceSettings;
+
+  @inject(TYPES.ClaRepository)
+  private _claRepository: ClaRepository;
 
   @inject(TYPES.CommentsService)
   private _commentsService: CommentsService;
@@ -201,7 +203,6 @@ class ClaCheckHandler {
     return currentAgreementForRepository.versionId;
   }
 
-  @async_retry()
   async checkCla(data: ClaCheckInput): Promise<void> {
     // Is an agreement configured for the PR repository?
     // if not, there is no need to do a check for CLA signing

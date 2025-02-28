@@ -1,12 +1,18 @@
-import CssBaseline from "@material-ui/core/CssBaseline";
+import "reflect-metadata";
+import CssBaseline from "@mui/material/CssBaseline";
 import Head from "next/head";
 import React, {ReactElement} from "react";
 import theme from "../components/theme";
 import {AppProps} from "next/app";
-import {ThemeProvider} from "@material-ui/core/styles";
+import {ThemeProvider} from "@mui/material/styles";
 import "normalize.css";
 import "../styles/global.scss";
 import "react-markdown-editor-lite/lib/index.css";
+
+import { CacheProvider } from '@emotion/react';
+import createCache from '@emotion/cache'
+
+const cache = createCache({ key: "next" });
 
 export default function App(props: AppProps): ReactElement {
   const {Component, pageProps} = props;
@@ -40,10 +46,12 @@ export default function App(props: AppProps): ReactElement {
           href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
         />
       </Head>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <CacheProvider value={cache}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </CacheProvider>
     </React.Fragment>
   );
 }

@@ -1,4 +1,4 @@
-import {Select, InputLabel, Button, FormHelperText} from "@material-ui/core";
+import {Select, InputLabel, Button, FormHelperText} from "@mui/material";
 import {Component, ReactElement} from "react";
 import ErrorPanel from "../../common/error";
 import Loader from "../../common/loader";

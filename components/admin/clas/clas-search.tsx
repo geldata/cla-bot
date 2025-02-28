@@ -1,5 +1,5 @@
 import formatDate from "../../format-date";
-import {Button, TextField} from "@material-ui/core";
+import {Button, TextField} from "@mui/material";
 import {changeHandler} from "../../forms";
 import {Component, ReactElement} from "react";
 import {ContributorLicenseAgreement} from "./contracts";

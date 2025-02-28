@@ -35,7 +35,7 @@ export class AgreementsTable extends Component<AgreementsTableProps> {
                     href="/admin/agreements/[id]"
                     as={"/admin/agreements/" + item.id}
                   >
-                    <a>{item.name}</a>
+                    {item.name}
                   </Link>
                 </td>
                 <td className="description-cell">{item.description}</td>

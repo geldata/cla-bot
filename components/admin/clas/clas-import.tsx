@@ -11,13 +11,13 @@ import {Component, ReactElement} from "react";
 import {ParseError, UnsupportedFileType} from "../../common/errors";
 import {parseSync as parseCSV} from "../../common/csv";
 import FileExamples, {FileExample} from "../../common/forms/file-examples";
-import {Button, TextField} from "@material-ui/core";
+import {Button, TextField} from "@mui/material";
 import {AgreementListItem} from "../agreements/contracts";
 import DynamicSelect from "../../common/forms/select-named-dynamic";
-import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
-import ErrorOutline from "@material-ui/icons/ErrorOutline";
-import NotInterestedIcon from "@material-ui/icons/NotInterested";
-import Publish from "@material-ui/icons/Publish";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import ErrorOutline from "@mui/icons-material/ErrorOutline";
+import NotInterestedIcon from "@mui/icons-material/NotInterested";
+import Publish from "@mui/icons-material/Publish";
 import {ImportOutput, ImportEntryResult} from "./contracts";
 import {ApplicationError} from "../../errors";
 
@@ -88,7 +88,7 @@ export class ClasImport extends Component<{}, ClasImportState> {
       entries: [],
       selectedAgreement: null,
     };
-    this.fileInput = React.createRef();
+    this.fileInput = React.createRef() as React.RefObject<FileInput>;
   }
 
   private toEntries(array: any[]): ImportUIEntry[] {

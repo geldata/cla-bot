@@ -1,7 +1,7 @@
-import HighlightOff from "@material-ui/icons/HighlightOff";
+import HighlightOff from "@mui/icons-material/HighlightOff";
 import React, {Component, ReactElement} from "react";
 import {iconBySeverity} from "./alert";
-import {Button} from "@material-ui/core";
+import {Button} from "@mui/material";
 import {reprError} from "./errors-repr";
 import {ApplicationError, ErrorDetails} from "../errors";
 

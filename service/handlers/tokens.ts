@@ -6,7 +6,8 @@ import {TYPES} from "../../constants/types";
 
 @injectable()
 export class TokensHandler {
-  @inject(TYPES.ServiceSettings) private _settings: ServiceSettings;
+  @inject(TYPES.ServiceSettings)
+  private _settings: ServiceSettings;
 
   set settings(value: ServiceSettings) {
     this._settings = value;

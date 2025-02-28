@@ -11,6 +11,7 @@ export interface DynamicSelectProps<T> {
   onLoaded?: (items: T[]) => void;
   initialValue?: string | T;
   disabled?: boolean;
+  children?: React.ReactNode;
 }
 
 interface DynamicSelectState<T> {

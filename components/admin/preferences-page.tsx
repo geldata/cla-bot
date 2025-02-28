@@ -1,7 +1,8 @@
 import Layout from "./layout";
-import Select from "@material-ui/core/Select";
+import Select from "@mui/material/Select";
 import {Component, ReactElement} from "react";
-import {MenuItem} from "@material-ui/core";
+import {MenuItem} from "@mui/material";
+import { SelectChangeEvent } from "@mui/material/Select";
 
 const DatesCulturePreferenceKey = "DATES_CULTURE";
 
@@ -21,8 +22,8 @@ export default class PreferencesPage extends Component<unknown, Preferences> {
     };
   }
 
-  onCultureSelect(event: React.ChangeEvent<{value: unknown}>): void {
-    const value = event.target.value as string;
+  onCultureSelect(event: SelectChangeEvent<string>): void {
+    const value = event.target.value;
 
     localStorage.setItem(DatesCulturePreferenceKey, value);
 

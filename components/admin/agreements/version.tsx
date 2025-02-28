@@ -3,7 +3,7 @@ import ConfirmDialog, {
   closedDialog,
 } from "../../common/confirm-dialog";
 import {AgreementVersion} from "./contracts";
-import {Button} from "@material-ui/core";
+import {Button} from "@mui/material";
 import {Component, ReactElement} from "react";
 import {post} from "../../fetch";
 import {VersionText} from "./version-text";

@@ -1,15 +1,15 @@
-import AssignmentInd from "@material-ui/icons/AssignmentInd";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import Description from "@material-ui/icons/Description";
-import GitHub from "@material-ui/icons/GitHub";
+import AssignmentInd from "@mui/icons-material/AssignmentInd";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import Description from "@mui/icons-material/Description";
+import GitHub from "@mui/icons-material/GitHub";
 import Link from "next/link";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import PeopleIcon from "@material-ui/icons/People";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import PeopleIcon from "@mui/icons-material/People";
 import React, {ReactElement} from "react";
-import Settings from "@material-ui/icons/Settings";
-import ImportContactsRoundedIcon from "@material-ui/icons/ImportContactsRounded";
+import Settings from "@mui/icons-material/Settings";
+import ImportContactsRoundedIcon from "@mui/icons-material/ImportContactsRounded";
 
 interface MenuItem {
   href: string;
@@ -24,7 +24,7 @@ export function getMenu(items: MenuItem[]): ReactElement {
     <div>
       {items.map((item) => (
         <Link href={item.href} key={item.href}>
-          <ListItem button>
+          <ListItem component="button">
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.text} />
           </ListItem>

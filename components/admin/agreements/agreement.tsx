@@ -1,7 +1,7 @@
 import {patch} from "../../fetch";
 import {Component, ReactElement} from "react";
 import {VersionsTable} from "./versions-table";
-import {TextField} from "@material-ui/core";
+import {TextField} from "@mui/material";
 import FormView from "../../common/forms/form-view";
 import {AgreementDetails, AgreementVersion} from "./contracts";
 import {changeHandler} from "../../forms";
@@ -131,7 +131,7 @@ export class AgreementView extends Component<
                   autoComplete="off"
                   multiline
                   rows={2}
-                  rowsMax={4}
+                  maxRows={4}
                   value={state.mod_description}
                   onChange={changeHandler.bind(this)}
                 />

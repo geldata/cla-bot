@@ -1,5 +1,5 @@
 import Head from "next/head";
-import {Container} from "@material-ui/core";
+import {Container} from "@mui/material";
 import {Component, ReactElement} from "react";
 import ClaView from "../components/common/cla-view";
 import ErrorPanel from "../components/common/error";

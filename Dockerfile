@@ -1,4 +1,4 @@
-FROM node:18.16-bullseye-slim AS builder
+FROM node:22.14-bookworm-slim AS builder
 WORKDIR /app
 COPY . .
 # Big packages cause false network connectivity alarms:
@@ -6,13 +6,10 @@ COPY . .
 RUN yarn install --network-timeout 1000000
 RUN yarn next build
 
-FROM edgedb/edgedb-cli:nightly AS edgedbcli
-
-FROM node:18.16-bullseye-slim AS final
+FROM node:22.14-bookworm-slim AS final
 ENV NODE_ENV production
 WORKDIR /app
 COPY --from=builder /app .
-COPY --from=edgedbcli /usr/bin/edgedb /usr/bin/edgedb
 
 EXPOSE 80
 EXPOSE 443

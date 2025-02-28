@@ -13,7 +13,7 @@ export default class DashboardView extends Component {
           <ol>
             <li>
               <Link href="/admin/agreements/new">
-                <a>Create an agreement object</a>
+                Create an agreement object
               </Link>
             </li>
             <li>Configure the text of the first version of the agreement</li>

@@ -1,6 +1,5 @@
 import fs from "fs";
 import jwt from "jsonwebtoken";
-import {async_retry} from "../../common/resiliency";
 import {getHeaders} from "./headers";
 import {expectSuccessfulResponse} from "../../common/web";
 
@@ -160,7 +159,6 @@ export class GitHubAccessHandler {
    * Obtains the ID of the GitHub application organization.
    * This assumes that the CLA-Bot is created for an Organization.
    */
-  @async_retry()
   async getApplicationOrganizationId(
     primaryAccessToken?: string
   ): Promise<number> {
@@ -178,21 +176,18 @@ export class GitHubAccessHandler {
     return data.owner.id;
   }
 
-  @async_retry()
   async getOrgAccessToken(primaryAccessToken?: string): Promise<string> {
     if (!primaryAccessToken)
       primaryAccessToken = this.createPrimaryAccessToken();
 
-    const organizationId = await this.getApplicationOrganizationId(
-      primaryAccessToken
-    );
+    const organizationId =
+      await this.getApplicationOrganizationId(primaryAccessToken);
     return await this.getAccessTokenForAccount(
       organizationId,
       primaryAccessToken
     );
   }
 
-  @async_retry()
   async getAccessTokenForAccount(
     targetAccountId: number,
     primaryAccessToken?: string
@@ -236,7 +231,6 @@ export class GitHubAccessHandler {
     return installationAccessTokenResult.token;
   }
 
-  @async_retry()
   async getAccessTokenForInstallation(
     installationId: number,
     primaryAccessToken?: string

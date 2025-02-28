@@ -1,10 +1,10 @@
-import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
-import ErrorOutline from "@material-ui/icons/ErrorOutline";
-import HighlightOff from "@material-ui/icons/HighlightOff";
-import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
+import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
+import ErrorOutline from "@mui/icons-material/ErrorOutline";
+import HighlightOff from "@mui/icons-material/HighlightOff";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import React, {Component, ReactElement} from "react";
-import ReportProblemOutlinedIcon from "@material-ui/icons/ReportProblemOutlined";
-import {Button} from "@material-ui/core";
+import ReportProblemOutlinedIcon from "@mui/icons-material/ReportProblemOutlined";
+import {Button} from "@mui/material";
 
 export enum AlertSeverity {
   error = "error",

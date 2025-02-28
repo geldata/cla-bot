@@ -3,7 +3,7 @@ import Layout from "../layout";
 import Panel from "../../common/panel";
 import {Component, ReactElement} from "react";
 import Link from "next/link";
-import {Button} from "@material-ui/core";
+import {Button} from "@mui/material";
 import {AgreementListItem} from "./contracts";
 import {AgreementsTable} from "./agreements-table";
 import {ApplicationError} from "../../errors";

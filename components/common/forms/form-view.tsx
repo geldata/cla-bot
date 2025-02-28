@@ -1,6 +1,6 @@
 import ErrorPanel from "../error";
 import {Component, ReactElement} from "react";
-import {Button} from "@material-ui/core";
+import {Button} from "@mui/material";
 import Loader from "../loader";
 import {ApplicationError} from "../../errors";
 
@@ -11,6 +11,7 @@ interface FormViewProps {
   editing: boolean;
   className?: string;
   readonly?: boolean;
+  children?: React.ReactNode;
 }
 
 interface FormViewState {

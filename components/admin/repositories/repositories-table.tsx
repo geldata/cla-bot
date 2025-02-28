@@ -1,8 +1,8 @@
 import Link from "next/link";
 import {Repository} from "./contracts";
 import {Component, ReactElement} from "react";
-import HighlightOff from "@material-ui/icons/HighlightOff";
-import {Button} from "@material-ui/core";
+import HighlightOff from "@mui/icons-material/HighlightOff";
+import {Button} from "@mui/material";
 
 export interface RepositoriesTableProps {
   items: Repository[];
@@ -34,7 +34,7 @@ export class RepositoriesTable extends Component<RepositoriesTableProps> {
                 <td>{item.fullName}</td>
                 <td>
                   <Link href={`/admin/agreements/${item.agreementId}`}>
-                    <a>{item.agreementName}</a>
+                    {item.agreementName}
                   </Link>
                 </td>
                 <td className="actions">

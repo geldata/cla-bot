@@ -1,7 +1,7 @@
-import Grid from "@material-ui/core/Grid";
+import Grid from "@mui/material/Grid";
 import Layout from "../layout";
 import Link from "next/link";
-import {Button, TextField} from "@material-ui/core";
+import {Button, TextField} from "@mui/material";
 import {Component, ReactElement} from "react";
 import ErrorPanel from "../../common/error";
 import Loader from "../../common/loader";
@@ -116,7 +116,7 @@ export default class NewAgreementPage extends Component<
                 type="textarea"
                 multiline
                 rows={2}
-                rowsMax={4}
+                maxRows={4}
                 autoComplete="off"
                 onChange={changeHandler.bind(this)}
               />

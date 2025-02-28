@@ -1,7 +1,7 @@
 import React, {Component, ReactElement} from "react";
-import Description from "@material-ui/icons/Description";
-import HighlightOff from "@material-ui/icons/HighlightOff";
-import {Button} from "@material-ui/core";
+import Description from "@mui/icons-material/Description";
+import HighlightOff from "@mui/icons-material/HighlightOff";
+import {Button} from "@mui/material";
 
 export interface FileInputProps {
   name: string;
@@ -25,7 +25,7 @@ export default class FileInput extends Component<
     super(props);
 
     this.state = {};
-    this.input = React.createRef();
+    this.input = React.createRef() as React.RefObject<HTMLInputElement>;
   }
 
   onClick(event: React.MouseEvent<HTMLInputElement>): void {

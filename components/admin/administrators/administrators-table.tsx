@@ -1,7 +1,7 @@
 import {Administrator} from "./contracts";
 import {Component, ReactElement} from "react";
-import HighlightOff from "@material-ui/icons/HighlightOff";
-import {Button} from "@material-ui/core";
+import HighlightOff from "@mui/icons-material/HighlightOff";
+import {Button} from "@mui/material";
 import React from "react";
 
 export interface AdministratorsTableProps {

@@ -1,4 +1,3 @@
-import {async_retry} from "../../common/resiliency";
 import {CommentsService} from "../../domain/comments";
 import {expectSuccessfulResponse} from "../../common/web";
 import {accessHandler, GitHubAccessHandler} from "./clientcredentials";
@@ -17,7 +16,6 @@ export class GitHubCommentsService implements CommentsService {
     this._access_token_handler = accessHandler;
   }
 
-  @async_retry()
   async createComment(
     targetAccountId: number,
     targetRepoFullName: string,
@@ -44,7 +42,6 @@ export class GitHubCommentsService implements CommentsService {
     return data.id.toString();
   }
 
-  @async_retry()
   async updateComment(
     targetAccountId: number,
     targetRepoFullName: string,

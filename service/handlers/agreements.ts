@@ -171,9 +171,8 @@ export class AgreementsHandler {
    * (non draft). Its texts cannot be edited after this operation.
    */
   async completeAgreementVersion(versionId: string): Promise<void> {
-    const agreementVersion = await this._repository.getAgreementVersion(
-      versionId
-    );
+    const agreementVersion =
+      await this._repository.getAgreementVersion(versionId);
 
     if (agreementVersion === null) throw new NotFoundError();
 

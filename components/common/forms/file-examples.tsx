@@ -1,6 +1,7 @@
 import defer from "lodash/defer";
 import React, {ChangeEvent, Component, ReactElement} from "react";
-import {Select} from "@material-ui/core";
+import {Select} from "@mui/material";
+import { SelectChangeEvent } from "@mui/material/Select";
 
 export interface FileExample {
   id: string;
@@ -28,55 +29,54 @@ export default class FileExamples extends Component<
     this.state = {
       selectedItem: props.items[0] || null,
     };
-    this.anchor = React.createRef();
+    this.anchor = React.createRef() as React.RefObject<HTMLAnchorElement>;
   }
 
-  onChange(
-    event: ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | {name?: string; value: unknown}
-    >
-  ): void {
-    // user's interaction
-    const id = event.target.value;
-    const selectedItem =
-      this.props.items.find((item) => item.id === id) || null;
-    this.setState({
-      selectedItem,
-    });
+  onChange(event: SelectChangeEvent<string>): void {
+      // Get the selected item's id
+      const id = event.target.value;
+      const selectedItem =
+        this.props.items.find((item) => item.id === id) || null;
 
-    defer(() => {
-      this.anchor.current?.click();
-    });
-  }
+      // Update the selected item in state
+      this.setState({
+        selectedItem,
+      });
 
-  render(): ReactElement {
-    const {items} = this.props;
-    const {selectedItem} = this.state;
+      // Delay the click event on the anchor
+      defer(() => {
+        this.anchor.current?.click();
+      });
+    }
 
-    return (
-      <div className="file-example-select">
-        <Select
-          native
-          value={selectedItem?.id}
-          onChange={this.onChange.bind(this)}
-        >
-          {items.map((item) => (
-            <option key={item.id} value={item.id}>
-              {item.name}
-            </option>
-          ))}
-        </Select>
-        {selectedItem && (
-          <a
-            href={selectedItem.href}
-            download
-            ref={this.anchor}
-            className="download-link"
+    render(): ReactElement {
+      const {items} = this.props;
+      const {selectedItem} = this.state;
+
+      return (
+        <div className="file-example-select">
+          <Select
+            native
+            value={selectedItem?.id}
+            onChange={this.onChange.bind(this)}
           >
-            download...
-          </a>
-        )}
-      </div>
-    );
+            {items.map((item) => (
+              <option key={item.id} value={item.id}>
+                {item.name}
+              </option>
+            ))}
+          </Select>
+          {selectedItem && (
+            <a
+              href={selectedItem.href}
+              download
+              ref={this.anchor}
+              className="download-link"
+            >
+              download...
+            </a>
+          )}
+        </div>
+      );
+    }
   }
-}

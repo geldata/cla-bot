@@ -1,17 +1,10 @@
 {
   "compilerOptions": {
     "target": "es2015",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext",
-      "es6"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext", "es6"],
     "strictPropertyInitialization": false,
-    "types": [
-      "reflect-metadata",
-      "mocha"
-    ],
+    "types": ["mocha"],
+    "typeRoots": ["./node_modules/@types"],
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitThis": true,
@@ -24,20 +17,11 @@
     "jsx": "preserve",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "typeRoots": [
-      "./node_modules/@types"
-    ],
     "allowJs": false,
-    "skipLibCheck": false,
-    "incremental": true
+    "skipLibCheck": true,
+    "incremental": true,
+    "useDefineForClassFields": false
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "server.js"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "server.js"]
 }

@@ -12,6 +12,7 @@ export interface PanelProps {
   loading: boolean;
   error?: ApplicationError;
   load?: () => void;
+  children?: React.ReactNode;
 }
 
 export default class Panel extends Component<PanelProps> {

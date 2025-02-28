@@ -1,4 +1,4 @@
-import parse from "csv-parse/lib/sync";
+import { parse } from "csv-parse/sync";
 import {cleanSpaces} from "./objects";
 
 // https://csv.js.org/parse/api/sync/

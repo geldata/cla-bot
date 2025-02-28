@@ -1,6 +1,6 @@
 import {getClient} from "./connect";
 import {injectable} from "inversify";
-import {ConstraintViolationError, Client} from "edgedb";
+import {ConstraintViolationError, Client} from "gel";
 import {ConflictError, SafeError} from "../../common/web";
 
 @injectable()

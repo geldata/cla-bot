@@ -1,5 +1,4 @@
 import {accessHandler, GitHubAccessHandler} from "./clientcredentials";
-import {async_retry} from "../../common/resiliency";
 import {
   CheckState,
   StatusCheckInput,
@@ -45,7 +44,6 @@ export class GitHubStatusChecksAPI implements StatusChecksService {
     this._access_token_handler = accessHandler;
   }
 
-  @async_retry()
   async getAllAuthorsByPullRequestId(
     targetRepoFullName: string,
     pullRequestNumber: number,
@@ -85,7 +83,6 @@ export class GitHubStatusChecksAPI implements StatusChecksService {
     return Array.from(authorsEmails);
   }
 
-  @async_retry()
   async createStatus(
     targetAccountId: number,
     targetRepoFullName: string,

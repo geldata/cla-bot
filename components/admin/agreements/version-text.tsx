@@ -8,7 +8,7 @@ import {get, put} from "../../fetch";
 import FormView from "../../common/forms/form-view";
 import formatDate from "../../format-date";
 import {changeHandler} from "../../forms";
-import {TextField} from "@material-ui/core";
+import {TextField} from "@mui/material";
 import ClaView from "../../common/cla-view";
 import {ApplicationError} from "../../errors";
 

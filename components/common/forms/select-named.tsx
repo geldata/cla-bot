@@ -1,5 +1,6 @@
 import React, {Component, ReactElement, ChangeEvent} from "react";
-import Select from "@material-ui/core/Select";
+import Select from "@mui/material/Select";
+import { SelectChangeEvent } from "@mui/material/Select";
 import {changeHandler} from "../../forms";
 
 export interface NamedItem {
@@ -48,11 +49,7 @@ export default class NamedSelect<T extends NamedItem> extends Component<
     return item;
   }
 
-  onChange(
-    event: ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | {name?: string; value: unknown}
-    >
-  ): void {
+  onChange(event: SelectChangeEvent<string>): void {
     // user's interaction
     changeHandler.call(this, event);
 

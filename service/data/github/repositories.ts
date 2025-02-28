@@ -1,4 +1,3 @@
-import {async_retry} from "../../../service/common/resiliency";
 import {
   ExternalRepository,
   RepositoriesService,
@@ -16,7 +15,6 @@ interface GitHubRepositoryInfo {
 
 @injectable()
 export class GitHubRepositoriesService implements RepositoriesService {
-  @async_retry()
   async getRepositories(organization: string): Promise<ExternalRepository[]> {
     const items = await fetchAllItems<GitHubRepositoryInfo>(
       `https://api.github.com/orgs/${organization}/repos`

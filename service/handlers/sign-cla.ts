@@ -1,4 +1,3 @@
-import {async_retry} from "../common/resiliency";
 import {type StatusChecksService} from "../../service/domain/checks";
 import {
   ContributorLicenseAgreement,
@@ -33,7 +32,6 @@ class SignClaHandler {
     return this._tokensHandler.parseToken(rawState) as ClaCheckInput;
   }
 
-  @async_retry()
   async createCla(
     username: string,
     emailInfo: EmailInfo,
@@ -115,12 +113,10 @@ class SignClaHandler {
     //
     const data = this.parseState(rawState);
     const authors = this.getAllAuthors(data);
-    const user = await this._usersService.getUserInfoFromAccessToken(
-      accessToken
-    );
-    const userEmails = await this._usersService.getUserEmailAddresses(
-      accessToken
-    );
+    const user =
+      await this._usersService.getUserInfoFromAccessToken(accessToken);
+    const userEmails =
+      await this._usersService.getUserEmailAddresses(accessToken);
 
     const matchingEmails = this.getAllMatchingEmails(authors, userEmails);
 

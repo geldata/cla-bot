@@ -1,4 +1,4 @@
-import {Client, createClient} from "edgedb";
+import {Client, createClient} from "gel";
 
 const client = createClient();
 
