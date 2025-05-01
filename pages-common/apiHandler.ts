@@ -25,7 +25,7 @@ export function createAPIHandler(methodHandlers: {
 
   return async (req: NextApiRequest, res: NextApiResponse) =>
     wrapAPILogging(req, res, async () => {
-      const methodHandler = handlers[req.method!] ?? handlers["_all"];
+      const methodHandler = handlers[req.method!] ?? handlers._all;
 
       if (!methodHandler) {
         res.status(405).end(`method ${req.method} not allowed`);

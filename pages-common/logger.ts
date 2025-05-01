@@ -11,7 +11,7 @@ export async function wrapAPILogging(
   req: NextApiRequest,
   res: NextApiResponse,
   handler: () => Promise<void>
-) {
+): Promise<void> {
   const logData: object = {};
   const startTime = performance.now();
   try {
@@ -45,7 +45,7 @@ export async function wrapAPILogging(
   }
 }
 
-export function addLogContext(data: object) {
+export function addLogContext(data: object): void {
   const ctxData = reqContext.getStore();
   if (ctxData) {
     Object.assign(ctxData, data);
