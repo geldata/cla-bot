@@ -1,10 +1,16 @@
-import {NextApiRequest, NextApiResponse} from "next";
+import {NextApiResponse} from "next";
+import {createAPIHandler} from "../../pages-common/apiHandler";
 
 interface AliveContract {
   alive: boolean;
   timestamp: Date;
 }
 
-export default (req: NextApiRequest, res: NextApiResponse<AliveContract>) => {
-  res.status(200).json({alive: true, timestamp: new Date()});
-};
+export default createAPIHandler({
+  _all: {
+    handler: async (req, res: NextApiResponse<AliveContract>) => {
+      res.status(200).json({alive: true, timestamp: new Date()});
+    },
+    noAuth: true,
+  },
+});

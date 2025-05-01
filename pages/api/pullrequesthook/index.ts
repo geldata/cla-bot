@@ -9,6 +9,7 @@ import * as bodyParser from "body-parser";
 import * as httpErrors from "http-errors";
 import {NextHandleFunction} from "connect";
 import {createAPIHandler} from "../../../pages-common/apiHandler";
+import {addLogContext} from "../../../pages-common/logger";
 
 export const config = {
   api: {
@@ -113,6 +114,8 @@ async function _handler(
   // Next.js enforces lowercase header names
   const event = req.headers["x-github-event"];
 
+  addLogContext({github_event: event});
+
   if (!event) {
     res.status(400).end("Missing X-GitHub-Event header");
     return;
@@ -127,6 +130,7 @@ async function _handler(
       const {body} = req;
 
       const action = body.action;
+      addLogContext({github_pr_action: action});
       if (["opened", "reopened", "synchronize"].indexOf(action) === -1) {
         res
           .status(200)
@@ -194,6 +198,8 @@ async function _handler(
           fullName: targetRepositoryFullName,
         },
       };
+
+      addLogContext({cla_check_input: input});
 
       await claHandler.checkCla(input);
       res.status(200).end("OK");
