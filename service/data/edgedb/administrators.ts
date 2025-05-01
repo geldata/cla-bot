@@ -48,8 +48,8 @@ export class EdgeDBAdministratorsRepository
   async removeAdministrator(id: string): Promise<void> {
     await this.run(async (connection) => {
       await e
-        .delete(e.Administrator, (a) => ({
-          filter: e.op(a.id, "=", e.uuid(id)),
+        .delete(e.Administrator, () => ({
+          filter_single: {id},
         }))
         .run(connection);
     });

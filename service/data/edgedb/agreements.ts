@@ -72,8 +72,8 @@ export class EdgeDBAgreementsRepository
   ): Promise<void> {
     await this.run(async (connection) =>
       e
-        .update(e.Agreement, (agreement) => ({
-          filter: e.op(agreement.id, "=", e.uuid(id)),
+        .update(e.Agreement, () => ({
+          filter_single: {id},
           set: {
             name,
             description,
@@ -91,8 +91,8 @@ export class EdgeDBAgreementsRepository
   ): Promise<void> {
     await this.run(async (connection) =>
       e
-        .update(e.AgreementText, (text) => ({
-          filter: e.op(text.id, "=", e.uuid(id)),
+        .update(e.AgreementText, () => ({
+          filter_single: {id},
           set: {
             title,
             text: body,
@@ -106,8 +106,8 @@ export class EdgeDBAgreementsRepository
   async updateAgreementVersion(id: string, draft: boolean): Promise<void> {
     await this.run(async (connection) =>
       e
-        .update(e.AgreementVersion, (ver) => ({
-          filter: e.op(ver.id, "=", e.uuid(id)),
+        .update(e.AgreementVersion, () => ({
+          filter_single: {id},
           set: {
             draft,
           },
@@ -119,20 +119,16 @@ export class EdgeDBAgreementsRepository
   async getCurrentAgreementVersionForRepository(
     repositoryFullName: string
   ): Promise<RepositoryAgreementInfo | null> {
-    const Version = e.assert_single(
-      e.select(e.AgreementVersion, (v) => {
-        const ver = v["<versions[is Agreement]"];
-        const repo = ver["<agreement[is Repository]"];
-
-        return {
-          filter: e.op(
-            e.op(v.current, "and", e.op(v.texts.culture, "=", "en")),
-            "and",
-            e.op(repo.full_name, "=", repositoryFullName)
-          ),
-        };
-      })
-    );
+    const Repo = e.select(e.Repository, () => ({
+      filter_single: {full_name: repositoryFullName},
+    }));
+    const Version = e.select(Repo.agreement.versions, (v) => ({
+      filter_single: e.op(
+        v.current,
+        "and",
+        e.any(e.op(v.texts.culture, "=", "en"))
+      ),
+    }));
 
     return await this.run(async (connection) =>
       e
@@ -147,21 +143,15 @@ export class EdgeDBAgreementsRepository
     repositoryFullName: string,
     cultureCode: string
   ): Promise<AgreementText | null> {
-    const Text = e.assert_single(
-      e.select(e.AgreementText, (text) => {
-        const ver = text["<texts[is AgreementVersion]"];
-        const agr = ver["<versions[is Agreement]"];
-        const repo = agr["<agreement[is Repository]"];
-
-        return {
-          filter: e.op(
-            e.op(e.op(text.culture, "=", cultureCode), "and", ver.current),
-            "and",
-            e.op(repo.full_name, "=", repositoryFullName)
-          ),
-        };
-      })
-    );
+    const Repo = e.select(e.Repository, () => ({
+      filter_single: {full_name: repositoryFullName},
+    }));
+    const CurrentVersion = e.select(Repo.agreement.versions, (ver) => ({
+      filter_single: ver.current,
+    }));
+    const Text = e.select(CurrentVersion.texts, (text) => ({
+      filter_single: e.op(text.culture, "=", cultureCode),
+    }));
 
     return await this.run(async (connection) =>
       e
@@ -182,17 +172,11 @@ export class EdgeDBAgreementsRepository
     versionId: string,
     cultureCode: string
   ): Promise<AgreementText | null> {
-    const Text = e.assert_single(
-      e.select(e.AgreementText, (text) => {
-        const ver = text["<texts[is AgreementVersion]"];
-
-        return {
-          filter: e.op(
-            e.op(text.culture, "=", cultureCode),
-            "and",
-            e.op(ver.id, "=", e.uuid(versionId))
-          ),
-        };
+    const Text = e.select(
+      e.select(e.AgreementVersion, () => ({filter_single: {id: versionId}}))
+        .texts,
+      (text) => ({
+        filter_single: e.op(text.culture, "=", cultureCode),
       })
     );
 
@@ -232,7 +216,7 @@ export class EdgeDBAgreementsRepository
           name: true,
           description: true,
           creationTime: agreement.creation_time,
-          filter: agreement.versions.current,
+          filter: e.any(agreement.versions.current),
         }))
         .run(connection)
     );
@@ -319,8 +303,8 @@ export class EdgeDBAgreementsRepository
         }),
       });
 
-      const Update = e.update(e.Agreement, (agreement) => ({
-        filter: e.op(agreement.id, "=", e.uuid(agreementId)),
+      const Update = e.update(e.Agreement, () => ({
+        filter_single: {id: agreementId},
         set: {
           versions: {
             "+=": Version,

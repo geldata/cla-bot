@@ -20,41 +20,41 @@ export class EdgeDBClaRepository
     if (ghEmailMatches) {
       signed_cla = await this.run(async (connection) =>
         e
-          .assert_single(
-            e.select(e.ContributorLicenseAgreement, (a) => ({
-              id: true,
-              email: true,
-              username: true,
-              signedAt: a.creation_time,
-              versionId: a.agreement_version.id,
+          .select(e.ContributorLicenseAgreement, (a) => ({
+            id: true,
+            email: true,
+            username: true,
+            signedAt: a.creation_time,
+            versionId: a.agreement_version.id,
 
-              filter: e.op(
-                a.normalized_username,
-                "=",
-                e.str_lower(ghEmailMatches[1])
-              ),
+            filter_single: e.op(
+              a.normalized_username,
+              "=",
+              e.str_lower(ghEmailMatches[1])
+            ),
 
-              order_by: a.email,
+            order_by: a.email,
 
-              limit: 1,
-            }))
-          )
+            limit: 1,
+          }))
           .run(connection)
       );
     } else {
       signed_cla = await this.run(async (connection) =>
         e
-          .assert_single(
-            e.select(e.ContributorLicenseAgreement, (a) => ({
-              id: true,
-              email: true,
-              username: true,
-              signedAt: a.creation_time,
-              versionId: a.agreement_version.id,
+          .select(e.ContributorLicenseAgreement, (a) => ({
+            id: true,
+            email: true,
+            username: true,
+            signedAt: a.creation_time,
+            versionId: a.agreement_version.id,
 
-              filter: e.op(a.normalized_email, "=", e.normalize_email(email)),
-            }))
-          )
+            filter_single: e.op(
+              a.normalized_email,
+              "=",
+              e.normalize_email(email)
+            ),
+          }))
           .run(connection)
       );
     }
