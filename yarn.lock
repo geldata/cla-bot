@@ -364,9 +364,9 @@
   integrity sha512-snKqtPW01tN0ui7yu9rGv69aJXr/a/Ywvl11sUjNtEcRc+ng/mQriFL0wLXMef74iHa/EkftbDzU9F8iFbH+zg==
 
 "@gel/generate@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@gel/generate/-/generate-0.6.0.tgz#cbf77e4aea9f86c5e14c51eab1870c08b893c2e2"
-  integrity sha512-p1qiR/JHNM52GCp19aes2Nwt2gzz0juJu6xaXFQyT1nyAdjIBfiy9j/JNxEM9xvfXUjv/yf3OiEk9Rq7zJjLHg==
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/@gel/generate/-/generate-0.6.2.tgz#5b273974045ead31fcfce870ae0080e850d6692b"
+  integrity sha512-Ew+lDLPi1wRyH7XhmUzDAYDGQ4Eu8pgP5DoIvCKPbc/uQYc2zIrTkaxGzoPN5MV+TwqgUNOvthW/38vzP0+/GA==
   dependencies:
     "@iarna/toml" "^2.2.5"
     debug "^4.3.4"
@@ -1760,10 +1760,10 @@ function-bind@^1.1.2:
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.2.tgz#2c02d864d97f3ea6c8830c464cbd11ab6eab7a1c"
   integrity sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==
 
-gel@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/gel/-/gel-2.0.0.tgz#d3627bcd2c769fe475ed1f28fc433660acc83371"
-  integrity sha512-Oq3Fjay71s00xzDc0BF/mpcLmnA+uRqMEJK8p5K4PaZjUEsxaeo+kR9OHBVAf289/qPd+0OcLOLUN0UhqiUCog==
+gel@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/gel/-/gel-2.1.0.tgz#8b15912d7dc1f8ec2ad8602a7313ab2fa632eb6a"
+  integrity sha512-HCeRqInCt6BjbMmeghJ6BKeYwOj7WJT5Db6IWWAA3IMUUa7or7zJfTUEkUWCxiOtoXnwnm96sFK9Fr47Yh2hOA==
   dependencies:
     "@petamoriken/float16" "^3.8.7"
     debug "^4.3.4"
